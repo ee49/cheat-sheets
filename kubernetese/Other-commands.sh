@@ -5,3 +5,67 @@ for i in {1..35}; do
 done
 
 #sample output from app: Hello, Application Version: v1 ; Color: blue OK
+
+
+#Kubernetese commands:
+kubectl replace -f <yaml file> # if we want to modify and apply changesto the replicaset.
+kubectl scale --replicas=6 -f replicaset-definition.yaml # to scale existing replicaset.
+kubectl scalse --replicas=6 replicaset <rs name> # to scale on the fly using replicaset Name. This change will not be saved
+kubectl expose pod redis --port=6379 --name redis-service --dry-run=client -o yaml
+or kubectl create service clusterip redis --tcp=6379:6379 --dry-run=client -o yaml
+
+
+
+#Tip:
+kubectl [command] [TYPE] [NAME] -o <output_format>
+
+Here are some of the commonly used formats:
+
+
+-o jsonOutput a JSON formatted API object.
+-o namePrint only the resource name and nothing else.
+-o wideOutput in the plain-text format with any additional information.y6tt
+-o yamlOutput a YAML formatted API object.
+
+#Examples:
+master $ kubectl get pods -o wide  
+master $ kubectl create namespace test-123 --dry-run -o json
+{
+    "kind": "Namespace",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "test-123",
+        "creationTimestamp": null
+    },
+    "spec": {},
+    "status": {}
+}
+master $ kubectl create namespace test-123 --dry-run -o yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: test-123
+spec: {}
+status: {}
+
+
+k run redis --image=redis:alpine --labels="tier=db" --dry-run=client -o yaml # to create yaml file quickly
+
+#Namespace commands:
+kubectl get pods --namespace=dev
+kubectl config set-context $(kubectl config current-context) --namespace=<existing namespace> # to set/change the namespace
+kubectl get pods --namespace=default
+kubectl get pods --all-nampespaces
+
+#configmap Sample:
+spec:
+  containers:
+    - envFrom:
+      - configMapRef: 
+          name: webapp-config-map  #configmap name
+      image: kodekloud/webapp-color
+
+
+
+
