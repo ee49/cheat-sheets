@@ -1,0 +1,16 @@
+#to configure ignore file:
+git config --global core.excludesFile ~/.gitignore
+
+git config --list #view current config
+
+#to rename or move a branch:
+git branch -m master old_master #m for Move
+git checkout --orphan old_master
+git branch -D old_master
+
+#to modify first commit:
+git update-ref -d HEAD. #This command deletes the branch we are in. If we are in main, this command will delete the main branch, and all the commits.
+
+#after this, all the changes will show up as added(stagged) but no commits in the repository. 
+#to remove all the files staged for commits:
+git reset * && git status
