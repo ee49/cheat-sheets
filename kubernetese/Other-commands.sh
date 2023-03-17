@@ -16,6 +16,7 @@ or kubectl create service clusterip redis --tcp=6379:6379 --dry-run=client -o ya
 
 
 
+
 #Tip:
 kubectl [command] [TYPE] [NAME] -o <output_format>
 
@@ -67,5 +68,20 @@ spec:
       image: kodekloud/webapp-color
 
 
+#multicontainer-example.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: yellow
+  name: yellow
+spec:
+  containers:
+  - image: busybox
+    name: lemon
+    command: ["sleep", "1000"]
+  - image: redis
+    name: gold
 
-
+#log into individual container:
+k exec -it podname --container main-app -- /bin/bash
