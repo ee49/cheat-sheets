@@ -1,0 +1,117 @@
+#app.yaml 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app
+  namespace: elastic-stack
+  labels:
+    name: app
+spec:
+  containers:
+  - name: app
+    image: kodekloud/event-simulator
+    volumeMounts:
+    - mountPath: /log
+      name: log-volume
+
+  volumes:
+  - name: log-volume
+    hostPath:
+      path: /var/log/webapp
+      type: DirectoryOrCreate
+      
+#elasticsearch-service.yaml
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: elasticsearch
+  namespace: elastic-stack
+spec:
+  selector:
+    name: elastic-search
+  type: NodePort
+  ports:
+  - port: 9200
+    targetPort: 9200
+    nodePort: 30200
+    name: port1
+
+#kibana-pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kibana
+  namespace: elastic-stack
+  labels:
+    name: kibana
+spec:
+  containers:
+  - name: kibana
+    image: kibana:6.4.2
+    ports:
+    - containerPort: 5601
+    env:
+    - name: ELASTICSEARCH_URL
+      value: http://elasticsearch:9200
+  - port: 9300
+    targetPort: 9300
+    nodePort: 30300
+    name: port2
+     
+# kibana-service.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: kibana
+  namespace: elastic-stack
+spec:
+  selector:
+    name: kibana
+  type: NodePort
+  ports:
+  - port: 5601
+    targetPort: 5601
+    nodePort: 30601    
+
+#elasticsearch-pod.yaml 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: elastic-search
+  namespace: elastic-stack
+  labels:
+    name: elastic-search
+spec:
+  containers:
+  - name: elastic-search
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.2
+    ports:
+    - containerPort: 9200
+    - containerPort: 9300
+    env:
+    - name: discovery.type
+      value: single-node
+      
+ 
+######ontrolplane ~/elastic-search ➜  more webapp-fluent.yaml 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app
+  labels:
+    name: app
+spec:
+  containers:
+  - name: app
+    image: kodekloud/event-simulator
+    volumeMounts:
+    - mountPath: /log
+      name: log-volume
+
+  # Volume to store the logs
+  volumes:
+  - name: log-volume
+    hostPath:
+      path: /var/log/webapp
+      type: DirectoryOrCreate
