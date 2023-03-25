@@ -85,3 +85,4 @@ spec:
 
 #log into individual container:
 k exec -it podname --container main-app -- /bin/bash
+k log podname # this will print logs from the concerened pods.
