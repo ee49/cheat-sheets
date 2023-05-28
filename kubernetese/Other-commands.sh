@@ -20,6 +20,7 @@ kubectl rollout status deployment/myapp-deploymet
 kubectl rollout history deployment/mapp-deployment
 kubectl rollout undo deployment/<deployment name>
 kubectl describe deployment <deployment name>
+kubectl edit deployment <deployment name>
 
 
 #Tip:
