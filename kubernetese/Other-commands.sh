@@ -13,8 +13,13 @@ kubectl scale --replicas=6 -f replicaset-definition.yaml # to scale existing rep
 kubectl scalse --replicas=6 replicaset <rs name> # to scale on the fly using replicaset Name. This change will not be saved
 kubectl expose pod redis --port=6379 --name redis-service --dry-run=client -o yaml
 or kubectl create service clusterip redis --tcp=6379:6379 --dry-run=client -o yaml
-
-
+kubectl create -f deployment-definition.yml
+kubectl get deployments
+kubectl apply -f deplyment-definition.yml // kubectl set image deployment/myapp-deployment nginx=nginx:1.9,1
+kubectl rollout status deployment/myapp-deploymet
+kubectl rollout history deployment/mapp-deployment
+kubectl rollout undo deployment/<deployment name>
+kubectl describe deployment <deployment name>
 
 
 #Tip:
