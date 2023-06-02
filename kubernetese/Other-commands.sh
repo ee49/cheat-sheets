@@ -22,6 +22,8 @@ kubectl rollout undo deployment/<deployment name>
 kubectl describe deployment <deployment name>
 kubectl edit deployment <deployment name>
 
+#JObs:
+k logs <pod-name> #to view the job workload jobs
 
 #Tip:
 kubectl [command] [TYPE] [NAME] -o <output_format>
@@ -33,6 +35,8 @@ Here are some of the commonly used formats:
 -o namePrint only the resource name and nothing else.
 -o wideOutput in the plain-text format with any additional information.y6tt
 -o yamlOutput a YAML formatted API object.
+
+create job throw-dice-job --image=kodekloud/throw-dice --dry-run=client -o yaml > throw-dice-job.yml
 
 #Examples:
 master $ kubectl get pods -o wide  
