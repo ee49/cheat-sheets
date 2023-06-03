@@ -65,7 +65,9 @@ k run redis --image=redis:alpine --labels="tier=db" --dry-run=client -o yaml # t
 
 #Namespace commands:
 kubectl get pods --namespace=dev
-kubectl config set-context $(kubectl config current-context) --namespace=<existing namespace> # to set/change the namespace
+kubectl config set-context --current --namespace=<set/change the namespace>
+kubectl config current-context  #Get current context
+#kubectl config set-context $(kubectl config current-context) --namespace=<existing namespace> # to set/change the namespace
 kubectl get pods --namespace=default
 kubectl get pods --all-nampespaces
 
