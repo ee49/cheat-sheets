@@ -23,4 +23,9 @@ git log --oneline --decorate --graph --all   # to view the logs
 git pull
 git reset --hard origin/master # reset your HEAD in local master repo to  point to origin/master.
 
+#Adding alias to a long/frequent git command:
+git config --global --edit  #nder the [alias] section, add this line:
+[alias]
+    ca = !git add -A && git commit -av
+
 
