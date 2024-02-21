@@ -28,4 +28,8 @@ git config --global --edit  #nder the [alias] section, add this line:
 [alias]
     ca = !git add -A && git commit -av
 
-
+#When a branch will get diverged?
+You make changes on your local branch. And then you pull changes from origin. at this point, your local master branch is updated 
+with origin commit. But the changes you made are still unstaged. 
+To save your work you save your local master branch. At this point the local master branch is diverged.
+in summary, you make changes, without commiting and then pull from origin and then commit your local changes.
