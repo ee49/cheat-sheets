@@ -1,13 +1,13 @@
 ## Squashing:
 
-### Squasing at single branch:
+#### Squasing at single branch:
 ```bash 
 git rebase -i HEAD~10
 #select which commit to pick or squash
 git push --force # if you have already pushed your changes then use origin
 ```
 
-## Squashing while merging branches:
+#### Squashing while merging branches:
 ```bash
 #check out the branch into which you want to merge the changes
 git checkout release
@@ -54,7 +54,7 @@ git reset --hard origin/master # reset your HEAD in local master repo to  point 
 ```
 
 
-#### When a branch will get diverged?
+##### When a branch will get diverged?
 You make changes on your local branch. And then you pull changes from origin. at this point, your local master branch is updated 
 with origin commit. But the changes you made are still unstaged. 
 To save your work you save your local master branch. At this point the local master branch is diverged.
