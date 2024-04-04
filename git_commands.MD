@@ -20,7 +20,8 @@ git push origin  #remember, you will be pushing the changes to remote release br
 ### to configure ignore file:
 ```bash 
 git config --global core.excludesFile ~/.gitignore
-git config --list #view current config```
+git config --list #view current config
+```
 
 # to rename or move a branch:
 git branch -m master old_master #m for Move
