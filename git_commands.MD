@@ -2,9 +2,16 @@
 
 #### Squasing at single branch:
 ```bash 
-git rebase -i HEAD~10
+#using reset
+git reset --soft HEAD~10
+git commit -m "Message"
+
+
+#use Rebase with caution
+git rebase -i HEAD~10  #this will change the order in which commits are applied so need to be cautiously
 #select which commit to pick or squash
 git push --force # if you have already pushed your changes then use origin
+
 ```
 
 #### Squashing while merging branches:
