@@ -23,12 +23,12 @@ git config --global core.excludesFile ~/.gitignore
 git config --list #view current config
 ```
 
-# to rename or move a branch:
+### to rename or move a branch:
 git branch -m master old_master #m for Move
 git checkout --orphan old_master
 git branch -D old_master
 
-# to modify first commit:
+#### to modify first commit:
 git update-ref -d HEAD. #This command deletes the branch we are in. If we are in main, this command will delete the main branch, and all the commits.
 
 #after this, all the changes will show up as added(stagged) but no commits in the repository. 
@@ -42,7 +42,7 @@ git config --global --edit  #nder the [alias] section, add this line:
 
 ### Troubleshooting:
 #1. Your local repository has diverged and when you pull from the remote, you want to overwrite and point it to origin head
-# Run below commands when you are in local repository
+#Run below commands when you are in local repository
 git log --oneline --decorate --graph --all   # to view the logs
 git pull
 git reset --hard origin/master # reset your HEAD in local master repo to  point to origin/master.
