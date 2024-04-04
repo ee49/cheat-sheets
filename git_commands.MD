@@ -59,6 +59,12 @@ git log --oneline --decorate --graph --all   # to view the logs
 git pull
 git reset --hard origin/master # reset your HEAD in local master repo to  point to origin/master.
 ```
+#### To compare local branch with remote branch
+```bash
+git getch origin release
+git diff --summary FETCH_HEAD <local branch>  # Remote branch can be referenced locally using FETCH_HEAD
+git diff FETCH_HEAD # get diff with the working directory
+git diff FETCH_HEAD -- mydir/myfile.py
 
 
 ##### When a branch will get diverged?
