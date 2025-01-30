@@ -1,0 +1,2 @@
+#### Watch
+watch -n 5 -d curl -l  https://someurl.com #d highligts differences between outputs.
